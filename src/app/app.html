@@ -1,0 +1,21 @@
+<app-header (alternarMenu)="alternarMenu()" />
+
+<mat-sidenav-container class="contenedor" [hasBackdrop]="true">
+  @if (estaLogueado()) {
+    <mat-sidenav
+      mode="over"
+      [opened]="menuAbierto()"
+      (closedStart)="cerrarMenu()"
+      class="lateral"
+    >
+      <app-menu (navego)="cerrarMenu()" />
+    </mat-sidenav>
+  }
+
+  <mat-sidenav-content>
+    <main class="contenido">
+      <router-outlet />
+    </main>
+    <app-footer />
+  </mat-sidenav-content>
+</mat-sidenav-container>
